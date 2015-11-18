@@ -6,35 +6,35 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Request implements Serializable{
-	
+
 	private static final long serialVersionUID = 1L;
-	private int REQUEST_CODE;
-	private final Object data;
-	private final int REQUEST_STATUS;
+
+	private final int REQUEST_CODE;
+	private final Object DATA;
+	private RequestStatus status;
 	private boolean waitForReply = true;
-	
-	public Request(int REQUEST_CODE, Object data, int REQUEST_STATUS) {
+	//TODO: request_code and status - enum
+	public Request(int REQUEST_CODE, Object data, RequestStatus status) {
 		this.REQUEST_CODE = REQUEST_CODE;
-		this.data = data;
-		this.REQUEST_STATUS = REQUEST_STATUS;
+		this.DATA = data;
+		this.status = status;
 	}
-	
+
 	public int getREQUEST_CODE() {
 		return REQUEST_CODE;
 	}
 
-	public void setREQUEST_CODE(int rEQUEST_CODE) {
-		REQUEST_CODE = rEQUEST_CODE;
-	}
-
 	public Object getData() {
-		return data;
-	}
-	
-	public int getREQUEST_STATUS() {
-		return REQUEST_STATUS;
+		return DATA;
 	}
 
+	public RequestStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(RequestStatus status) {
+		this.status = status;
+	}
 
 	public boolean isWaitForReply() {
 		return waitForReply;
@@ -45,19 +45,19 @@ public class Request implements Serializable{
 	}
 
 	private void readObject(
-		     ObjectInputStream aInputStream
-		   ) throws ClassNotFoundException, IOException {
-		     //always perform the default de-serialization first
-		     aInputStream.defaultReadObject();
+			ObjectInputStream aInputStream
+			) throws ClassNotFoundException, IOException {
+		//always perform the default de-serialization first
+		aInputStream.defaultReadObject();
 
-		     //ensure that object state has not been corrupted or tampered with maliciously
-		   //  validateState();
-		  }
-	
+		//ensure that object state has not been corrupted or tampered with maliciously
+		//  validateState();
+	}
+
 	private void writeObject(
-		      ObjectOutputStream aOutputStream
-		    ) throws IOException {
-		      //perform the default serialization for all non-transient, non-static fields
-		      aOutputStream.defaultWriteObject();
-		    }
+			ObjectOutputStream aOutputStream
+			) throws IOException {
+		//perform the default serialization for all non-transient, non-static fields
+		aOutputStream.defaultWriteObject();
+	}
 }
