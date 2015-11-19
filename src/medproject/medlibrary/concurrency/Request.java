@@ -20,6 +20,13 @@ public class Request implements Serializable{
 		this.status = status;
 	}
 
+	public boolean isCompleted(){
+		if(status == RequestStatus.REQUEST_COMPLETED ||
+				status == RequestStatus.REQUEST_FAILED)
+			return true;
+		return false;
+	}
+	
 	public int getREQUEST_CODE() {
 		return REQUEST_CODE;
 	}
