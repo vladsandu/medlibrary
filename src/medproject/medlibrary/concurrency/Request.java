@@ -14,10 +14,10 @@ public class Request implements Serializable{
 	private RequestStatus status;
 	private boolean waitForReply = true;
 	//TODO: request_code and status - enum
-	public Request(int REQUEST_CODE, Object data, RequestStatus status) {
+	public Request(int REQUEST_CODE, Object data) {
 		this.REQUEST_CODE = REQUEST_CODE;
 		this.DATA = data;
-		this.status = status;
+		this.status = RequestStatus.REQUEST_NEW;
 	}
 
 	public boolean isCompleted(){
