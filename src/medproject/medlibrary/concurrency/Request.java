@@ -10,14 +10,19 @@ public class Request implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private final int REQUEST_CODE;
-	private final Object DATA;
+	private Object DATA;
 	private RequestStatus status;
-	private boolean waitForReply = true;
+	private boolean waitForReply;
+	private String message;
 	//TODO: request_code and status - enum
+	
+	
 	public Request(int REQUEST_CODE, Object data) {
 		this.REQUEST_CODE = REQUEST_CODE;
 		this.DATA = data;
 		this.status = RequestStatus.REQUEST_NEW;
+		message = null;
+		waitForReply = true;
 	}
 
 	public boolean isCompleted(){
@@ -31,8 +36,12 @@ public class Request implements Serializable{
 		return REQUEST_CODE;
 	}
 
-	public Object getData() {
+	public Object getDATA() {
 		return DATA;
+	}
+
+	public void setDATA(Object dATA) {
+		DATA = dATA;
 	}
 
 	public RequestStatus getStatus() {
@@ -47,8 +56,17 @@ public class Request implements Serializable{
 		return waitForReply;
 	}
 
-	public void setWaitForReply(boolean waitForReply) {
+	public Request setWaitForReply(boolean waitForReply) {
 		this.waitForReply = waitForReply;
+		return this;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	private void readObject(

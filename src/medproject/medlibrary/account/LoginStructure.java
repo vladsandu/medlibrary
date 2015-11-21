@@ -5,25 +5,22 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Operator implements Serializable{
+public class LoginStructure implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6667759883103529007L;
-	/**
-	 * 
-	 */
-	private final int operatorID;
+	private static final long serialVersionUID = 1L;
 	private final String username;
+	private final String encrypted_password;
 	private final int operatorType;
 	
-	public Operator(int operatorID, String username, int operatorType) {
-		this.operatorID = operatorID;
-		this.username = username;
+	public LoginStructure(String username, String encrypted_password, int operatorType) {
 		this.operatorType = operatorType;
+		this.username = username;
+		this.encrypted_password = encrypted_password;
 	}
-
+	
 	private void readObject(
 		     ObjectInputStream aInputStream
 		   ) throws ClassNotFoundException, IOException {
@@ -40,20 +37,16 @@ public class Operator implements Serializable{
 		      //perform the default serialization for all non-transient, non-static fields
 		      aOutputStream.defaultWriteObject();
 		    }
-
-	boolean isValid(){
-		return true;	
-	}
-
+	
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getEncrypted_password() {
+		return encrypted_password;
 	}
 
 	public int getOperatorType() {
 		return operatorType;
-	}
-
-	public int getOperatorID() {
-		return operatorID;
 	}
 }
