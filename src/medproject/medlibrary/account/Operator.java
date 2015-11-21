@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Account implements Serializable{
+public class Operator implements Serializable{
 
 	/**
 	 * 
@@ -14,27 +14,15 @@ public class Account implements Serializable{
 	/**
 	 * 
 	 */
-	private int accountID;
+	private final int operatorID;
 	private final String username;
 	private final String encryptedPassword;
-	private final String encryptedKey;
-	private String securityQuestion;
-	private String securityAnswer;
 	
-	public Account(String username, String encryptedPassword,
-			String encryptedKey, String securityQuestion, String securityAnswer) {
+	public Operator(int operatorID, String username, String encryptedPassword) {
+		this.operatorID = operatorID;
 		this.username = username;
+		this.encryptionKey = "unset";
 		this.encryptedPassword = encryptedPassword;
-		this.encryptedKey = encryptedKey;
-		this.securityQuestion = securityQuestion;
-		this.securityAnswer = securityAnswer;
-	}
-
-	public Account(int accountID, String username, String encryptedPassword) {
-		this.accountID = accountID;
-		this.username = username;
-		this.encryptedKey = encryptedPassword;
-		this.encryptedPassword = "unset";
 	}
 
 	private void readObject(
