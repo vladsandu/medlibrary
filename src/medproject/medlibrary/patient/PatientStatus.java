@@ -6,4 +6,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public enum PatientStatus{
+	ASIGURAT;
+	
+	public static PatientStatus getStatusByID(int id){
+		return ASIGURAT;
+	}
 }
