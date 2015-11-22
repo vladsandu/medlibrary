@@ -1,22 +1,24 @@
-package medproject.medlibrary.pacient;
+package medproject.medlibrary.patient;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Adresa implements Serializable{
+public class Address implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String judet, localitate, strada;
+	private String county, town, street;
 
-	public Adresa(String judet, String localitate) {
-		this.judet = judet;
-		this.localitate = localitate;
+	public Address(String county, String town, String street) {
+		super();
+		this.county = county;
+		this.town = town;
+		this.street = street;
 	}
 
 	private void readObject(
@@ -36,28 +38,27 @@ public class Adresa implements Serializable{
 		aOutputStream.defaultWriteObject();
 	}
 
-	public String getJudet() {
-		return judet;
+	public String getCounty() {
+		return county;
 	}
 
-	public void setJudet(String judet) {
-		this.judet = judet;
+	public void setCounty(String county) {
+		this.county = county;
 	}
 
-	public String getLocalitate() {
-		return localitate;
+	public String getTown() {
+		return town;
 	}
 
-	public void setLocalitate(String localitate) {
-		this.localitate = localitate;
+	public void setTown(String town) {
+		this.town = town;
 	}
 
-	public String getStrada() {
-		return strada;
+	public String getStreet() {
+		return street;
 	}
 
-	public void setStrada(String strada) {
-		this.strada = strada;
+	public void setStreet(String street) {
+		this.street = street;
 	}
-
 }
