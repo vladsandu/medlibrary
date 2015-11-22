@@ -19,15 +19,15 @@ public class Pacient implements Serializable{
 	private final String DATA_NASTERE;
 	private String cetatenie;
 	private Adresa adresa;
-	private int categorie;
+	private CategoriePacient categorie;
 	private final String DATA_INSCRIERE;
 	private String DATA_IESIRE, DATA_DECES;
-	private int STARE_ASIGURAT;
+	private StarePacient STARE_ASIGURAT;
 	//	GRUPA_SANGUINA//
 	//RH//
 	public Pacient(int PID, int CNP, String nume, String prenume, String GEN, String DATA_NASTERE, String cetatenie,
-			Adresa adresa, int categorie, String DATA_INSCRIERE,
-			int STARE_ASIGURAT) {
+			Adresa adresa, CategoriePacient categorie, String DATA_INSCRIERE,
+			StarePacient STARE_ASIGURAT) {
 		this.PID = PID;
 		this.CNP = CNP;
 		this.nume = nume;
@@ -83,10 +83,10 @@ public class Pacient implements Serializable{
 	public void setAdresa(Adresa adresa) {
 		this.adresa = adresa;
 	}
-	public int getCategorie() {
+	public CategoriePacient getCategorie() {
 		return categorie;
 	}
-	public void setCategorie(int categorie) {
+	public void setCategorie(CategoriePacient categorie) {
 		this.categorie = categorie;
 	}
 	public String getDATA_IESIRE() {
@@ -101,10 +101,10 @@ public class Pacient implements Serializable{
 	public void setDATA_DECES(String dATA_DECES) {
 		DATA_DECES = dATA_DECES;
 	}
-	public int getSTARE_ASIGURAT() {
+	public StarePacient getSTARE_ASIGURAT() {
 		return STARE_ASIGURAT;
 	}
-	public void setSTARE_ASIGURAT(int sTARE_ASIGURAT) {
+	public void setSTARE_ASIGURAT(StarePacient sTARE_ASIGURAT) {
 		STARE_ASIGURAT = sTARE_ASIGURAT;
 	}
 	public int getPID() {

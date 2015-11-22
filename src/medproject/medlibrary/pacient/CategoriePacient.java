@@ -1,5 +1,5 @@
 package medproject.medlibrary.pacient;
 
-public class CategoriePacient {
+public enum CategoriePacient {
 
 }
