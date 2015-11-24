@@ -13,7 +13,7 @@ public class Patient implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private final int PID;
-	private final int CNP;
+	private final String CNP;
 	private String firstName, lastName;
 	private final String gender;
 	private final String birthDate;
@@ -21,12 +21,12 @@ public class Patient implements Serializable{
 	private Address address;
 	private PatientCategory category;
 	private final String enlistingDate;
-	private String delistingDate, deceasedDate;
+	private String delistingDate, deceaseDate;
 	private PatientStatus status;
 	//	GRUPA_SANGUINA//
 	//RH//
 
-	public Patient(int pID, int cNP, String firstName, String lastName, String gender, String birthDate,
+	public Patient(int pID, String cNP, String firstName, String lastName, String gender, String birthDate,
 			String nationality, Address address, PatientCategory category, String enlistingDate, PatientStatus status) {
 		super();
 		PID = pID;
@@ -40,6 +40,8 @@ public class Patient implements Serializable{
 		this.category = category;
 		this.enlistingDate = enlistingDate;
 		this.status = status;
+		delistingDate = "-";
+		deceaseDate = "-";
 	}
 	
 	private void readObject(
@@ -107,12 +109,12 @@ public class Patient implements Serializable{
 		this.delistingDate = delistingDate;
 	}
 
-	public String getDeceasedDate() {
-		return deceasedDate;
+	public String getDeceaseDate() {
+		return deceaseDate;
 	}
 
-	public void setDeceasedDate(String deceasedDate) {
-		this.deceasedDate = deceasedDate;
+	public void setDeceaseDate(String deceaseDate) {
+		this.deceaseDate = deceaseDate;
 	}
 
 	public PatientStatus getStatus() {
@@ -127,7 +129,7 @@ public class Patient implements Serializable{
 		return PID;
 	}
 
-	public int getCNP() {
+	public String getCNP() {
 		return CNP;
 	}
 
