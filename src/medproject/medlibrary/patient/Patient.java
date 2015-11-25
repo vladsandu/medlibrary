@@ -17,14 +17,14 @@ public class Patient implements Serializable{
 	private PatientStatus status;
 
 	private final PatientRecord patientRecord;
-	private final ListingRecord listingRecord;
+	private final RegistrationRecord registrationRecord;
 
-	public Patient(int patientID, PatientRecord patientRecord, ListingRecord listingRecord, 
+	public Patient(int patientID, PatientRecord patientRecord, RegistrationRecord registrationRecord, 
 			PatientCategory category, PatientStatus status) {
 		this.patientID = patientID;
 		this.category = category;
 		this.patientRecord = patientRecord;
-		this.listingRecord = listingRecord;
+		this.registrationRecord = registrationRecord;
 		this.status = status;
 	}
 
@@ -44,8 +44,8 @@ public class Patient implements Serializable{
 		return patientRecord;
 	}
 
-	public ListingRecord getListingRecord() {
-		return listingRecord;
+	public RegistrationRecord getRegistrationRecord() {
+		return registrationRecord;
 	}
 
 	public PatientCategory getCategory() {
