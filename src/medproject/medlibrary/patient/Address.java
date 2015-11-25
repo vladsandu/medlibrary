@@ -12,12 +12,11 @@ public class Address implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String county, town, street;
+	private String county, city, street;
 
-	public Address(String county, String town, String street) {
-		super();
+	public Address(String county, String city, String street) {
 		this.county = county;
-		this.town = town;
+		this.city = city;
 		this.street = street;
 	}
 
@@ -46,12 +45,12 @@ public class Address implements Serializable{
 		this.county = county;
 	}
 
-	public String getTown() {
-		return town;
+	public String getCity() {
+		return city;
 	}
 
-	public void setTown(String town) {
-		this.town = town;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getStreet() {
