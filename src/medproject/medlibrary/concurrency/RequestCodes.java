@@ -10,11 +10,15 @@ public class RequestCodes {
 	public static final int LOGIN_REQUEST = 1;
 	
 	public static final int PATIENT_LIST_REQUEST = 2;
+	public static final int PATIENT_RECORD_BY_CNP_REQUEST = 3;
+	public static final int ADD_PATIENT_REQUEST = 4;
 	
 	public static int getRequestType(Request request){
 		if(request.getREQUEST_CODE() == LOGIN_REQUEST)
 			return LOGIN_TYPE_REQUEST;
-		else if(request.getREQUEST_CODE() == PATIENT_LIST_REQUEST)
+		else if(request.getREQUEST_CODE() == PATIENT_LIST_REQUEST ||
+				request.getREQUEST_CODE() == PATIENT_RECORD_BY_CNP_REQUEST ||
+				request.getREQUEST_CODE() == ADD_PATIENT_REQUEST)
 			return PATIENT_TYPE_REQUEST;
 		return -1;
 	}
