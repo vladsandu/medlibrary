@@ -12,6 +12,7 @@ public class PatientRecord implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private final int PERSON_ID;
 	private final String CNP;
 	private String firstName;
 	private String lastName;
@@ -24,8 +25,9 @@ public class PatientRecord implements Serializable{
 	
 	private final Address address;
 	
-	public PatientRecord(Address address, String CNP, String firstName, String lastName, String sex, Date birthDate,
+	public PatientRecord(int PERSON_ID, Address address, String CNP, String firstName, String lastName, String sex, Date birthDate,
 			Date deceaseDate,String nationality, int bloodType, int rhType) {
+		this.PERSON_ID = PERSON_ID;
 		this.CNP = CNP;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -125,4 +127,7 @@ public class PatientRecord implements Serializable{
 		return address;
 	}
 
+	public int getPERSON_ID() {
+		return PERSON_ID;
+	}
 }
