@@ -14,6 +14,7 @@ public class Request implements Serializable{
 	private RequestStatus status;
 	private boolean waitForReply;
 	private String message;
+	private int PIN;
 	//TODO: request_code and status - enum
 	
 	
@@ -23,6 +24,12 @@ public class Request implements Serializable{
 		this.status = RequestStatus.REQUEST_NEW;
 		message = null;
 		waitForReply = true;
+		PIN = 0;
+	}
+
+	public Request(int request_code, Object data, int pin) {
+		this(request_code, data);
+		PIN = pin;
 	}
 
 	public boolean isCompleted(){
@@ -32,6 +39,14 @@ public class Request implements Serializable{
 		return false;
 	}
 	
+	public int getPIN() {
+		return PIN;
+	}
+
+	public void setPIN(int pIN) {
+		PIN = pIN;
+	}
+
 	public int getREQUEST_CODE() {
 		return REQUEST_CODE;
 	}
