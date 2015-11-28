@@ -23,16 +23,21 @@ public class PatientRecord implements Serializable{
 	private BloodType bloodType;
 	private RHType rhType;
 	
-	private final Address address;
-	
+	private PatientCategory category;
+	private PatientStatus status;
+
+	private Address address;
+	//TODO: Refactor
 	public PatientRecord(int PERSON_ID, Address address, String CNP, String firstName, String lastName, Gender sex, Date birthDate,
-			Date deceaseDate,String nationality, BloodType bloodType, RHType rhType) {
+			Date deceaseDate,String nationality, PatientCategory category, PatientStatus status, BloodType bloodType, RHType rhType) {
 		this.PERSON_ID = PERSON_ID;
 		this.CNP = CNP;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.sex = sex;
 		this.birthDate = birthDate;
+		this.status = status;
+		this.category = category;
 		this.address = address;
 		this.deceaseDate = deceaseDate;
 		this.nationality = nationality;
@@ -129,5 +134,27 @@ public class PatientRecord implements Serializable{
 
 	public int getPERSON_ID() {
 		return PERSON_ID;
+	}
+
+	public PatientCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(PatientCategory category) {
+		this.category = category;
+	}
+
+	public PatientStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(PatientStatus status) {
+		this.status = status;
+	}
+
+	public void setAddress(Address newAddress) {
+		this.address.setCounty(newAddress.getCounty());
+		this.address.setCity(newAddress.getCity());
+		this.address.setStreet(newAddress.getStreet());
 	}
 }
