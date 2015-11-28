@@ -16,17 +16,17 @@ public class PatientRecord implements Serializable{
 	private final String CNP;
 	private String firstName;
 	private String lastName;
-	private final String sex;
+	private final Gender sex;
 	private final Date birthDate;
 	private Date deceaseDate;
 	private String nationality;
 	private BloodType bloodType;
-	private int rhType;
+	private RHType rhType;
 	
 	private final Address address;
 	
-	public PatientRecord(int PERSON_ID, Address address, String CNP, String firstName, String lastName, String sex, Date birthDate,
-			Date deceaseDate,String nationality, BloodType bloodType, int rhType) {
+	public PatientRecord(int PERSON_ID, Address address, String CNP, String firstName, String lastName, Gender sex, Date birthDate,
+			Date deceaseDate,String nationality, BloodType bloodType, RHType rhType) {
 		this.PERSON_ID = PERSON_ID;
 		this.CNP = CNP;
 		this.firstName = firstName;
@@ -84,11 +84,11 @@ public class PatientRecord implements Serializable{
 		this.bloodType = bloodType;
 	}
 
-	public int getRhType() {
+	public RHType getRhType() {
 		return rhType;
 	}
 
-	public void setRhType(int rhType) {
+	public void setRhType(RHType rhType) {
 		this.rhType = rhType;
 	}
 
@@ -96,7 +96,7 @@ public class PatientRecord implements Serializable{
 		return CNP;
 	}
 
-	public String getSex() {
+	public Gender getSex() {
 		return sex;
 	}
 
