@@ -12,9 +12,11 @@ public class Address implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private final int personID;
 	private String county, city, street;
 
-	public Address(String county, String city, String street) {
+	public Address(int id, String county, String city, String street) {
+		this.personID = id;
 		this.county = county;
 		this.city = city;
 		this.street = street;
@@ -59,5 +61,9 @@ public class Address implements Serializable{
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public int getPersonID() {
+		return personID;
 	}
 }
