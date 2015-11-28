@@ -20,13 +20,13 @@ public class PatientRecord implements Serializable{
 	private final Date birthDate;
 	private Date deceaseDate;
 	private String nationality;
-	private int bloodType;
+	private BloodType bloodType;
 	private int rhType;
 	
 	private final Address address;
 	
 	public PatientRecord(int PERSON_ID, Address address, String CNP, String firstName, String lastName, String sex, Date birthDate,
-			Date deceaseDate,String nationality, int bloodType, int rhType) {
+			Date deceaseDate,String nationality, BloodType bloodType, int rhType) {
 		this.PERSON_ID = PERSON_ID;
 		this.CNP = CNP;
 		this.firstName = firstName;
@@ -76,11 +76,11 @@ public class PatientRecord implements Serializable{
 		this.nationality = nationality;
 	}
 
-	public int getBloodType() {
+	public BloodType getBloodType() {
 		return bloodType;
 	}
 
-	public void setBloodType(int bloodType) {
+	public void setBloodType(BloodType bloodType) {
 		this.bloodType = bloodType;
 	}
 
