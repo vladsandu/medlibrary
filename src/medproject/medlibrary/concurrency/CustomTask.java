@@ -2,7 +2,7 @@ package medproject.medlibrary.concurrency;
 
 import java.util.concurrent.CountDownLatch;
 
-import javafx.concurrent.Task;
+import medproject.medlibrary.graphics.requestLoadingWindow.RequestLoadingWindow;
 
 public abstract class CustomTask implements Runnable{
 
@@ -10,11 +10,13 @@ public abstract class CustomTask implements Runnable{
 	private final int requestCode;
 	protected RequestStatus requestStatus;
 	private final CountDownLatch latch;
+	protected final RequestLoadingWindow loadingWindow;
 	
-	public CustomTask(int requestCode) {
+	public CustomTask(int requestCode, String message) {
 		this.requestCode = requestCode;
 		this.latch = new CountDownLatch(1);
 		this.requestStatus = RequestStatus.REQUEST_PENDING;
+		this.loadingWindow = new RequestLoadingWindow(message);
 	}
 
 	public void setData(Object data) {
