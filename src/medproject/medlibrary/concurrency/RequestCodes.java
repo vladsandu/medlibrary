@@ -14,6 +14,7 @@ public class RequestCodes {
 	public static final int ADD_PATIENT_REQUEST = 4;
 	public static final int UPDATE_PATIENT_ADDRESS_REQUEST = 5;
 	public static final int DELETE_PATIENT_REQUEST = 6;
+	public static final int UNREGISTER_PATIENT_REQUEST = 7;
 	
 	public static int getRequestType(Request request){
 		if(request.getREQUEST_CODE() == LOGIN_REQUEST)
@@ -22,7 +23,8 @@ public class RequestCodes {
 				request.getREQUEST_CODE() == PATIENT_RECORD_BY_CNP_REQUEST ||
 				request.getREQUEST_CODE() == ADD_PATIENT_REQUEST ||
 				request.getREQUEST_CODE() == UPDATE_PATIENT_ADDRESS_REQUEST ||
-				request.getREQUEST_CODE() == DELETE_PATIENT_REQUEST)
+				request.getREQUEST_CODE() == DELETE_PATIENT_REQUEST ||
+				request.getREQUEST_CODE() == UNREGISTER_PATIENT_REQUEST)
 			return PATIENT_TYPE_REQUEST;
 		return -1;
 	}
