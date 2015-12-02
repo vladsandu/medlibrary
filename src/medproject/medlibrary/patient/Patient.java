@@ -4,28 +4,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import medproject.medlibrary.examination.Examination;
 
 public class Patient implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private final int patientID;
-	private PatientCategory category;
-	private PatientStatus status;
 
-	private final PatientRecord patientRecord;
+	private PatientRecord patientRecord;
 	private final RegistrationRecord registrationRecord;
-
-	public Patient(int patientID, PatientRecord patientRecord, RegistrationRecord registrationRecord, 
-			PatientCategory category, PatientStatus status) {
+	private final List<Examination> examinationList;
+	
+	public Patient(int patientID, PatientRecord patientRecord, RegistrationRecord registrationRecord) {
 		this.patientID = patientID;
-		this.category = category;
 		this.patientRecord = patientRecord;
 		this.registrationRecord = registrationRecord;
-		this.status = status;
+		this.examinationList = new ArrayList<Examination>();
 	}
 
 	private void readObject(
@@ -48,24 +46,19 @@ public class Patient implements Serializable{
 		return registrationRecord;
 	}
 
-	public PatientCategory getCategory() {
-		return category;
-	}
-
-	public void setCategory(PatientCategory category) {
-		this.category = category;
-	}
-
-	public PatientStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(PatientStatus status) {
-		this.status = status;
-	}
-
 	public int getPatientID() {
 		return patientID;
 	}
 
+	public void setPatientRecord(PatientRecord patientRecord) {
+		this.patientRecord = patientRecord;
+	}
+
+	public List<Examination> getExaminationList() {
+		return examinationList;
+	}
+	
+	public void addExamination(Examination examination){
+		examinationList.add(examination);
+	}
 }
