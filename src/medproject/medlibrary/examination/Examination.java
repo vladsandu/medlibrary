@@ -49,6 +49,10 @@ public class Examination implements Serializable{
 		aOutputStream.defaultWriteObject();
 	}
 
+	public void addDiagnosis(Diagnosis diagnosis){
+		diagnosisList.add(diagnosis);
+	}
+	
 	public int getExaminationID() {
 		return examinationID;
 	}
