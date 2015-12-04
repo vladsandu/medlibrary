@@ -1,0 +1,63 @@
+package medproject.medlibrary.prescription;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class Prescription implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private final int ID;
+	private final int examinationID;
+	private final int dayCount;
+	private final PrescriptionType type;
+	private PrescriptionStatus status;
+	
+	public Prescription(int iD, int examinationID, int dayCount, PrescriptionType type, PrescriptionStatus status) {
+		ID = iD;
+		this.examinationID = examinationID;
+		this.dayCount = dayCount;
+		this.type = type;
+		this.status = status;
+	}
+	
+	private void readObject(
+			ObjectInputStream aInputStream
+			) throws ClassNotFoundException, IOException {
+
+		aInputStream.defaultReadObject();
+	}
+
+	private void writeObject(
+			ObjectOutputStream aOutputStream
+			) throws IOException {
+
+		aOutputStream.defaultWriteObject();
+	}
+
+	public PrescriptionStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(PrescriptionStatus status) {
+		this.status = status;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public int getExaminationID() {
+		return examinationID;
+	}
+
+	public int getDayCount() {
+		return dayCount;
+	}
+
+	public PrescriptionType getType() {
+		return type;
+	}
+}
