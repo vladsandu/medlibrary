@@ -1,4 +1,4 @@
-package medproject.medlibrary.examination;
+package medproject.medlibrary.diagnosis;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

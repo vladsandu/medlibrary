@@ -8,6 +8,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import medproject.medlibrary.diagnosis.Diagnosis;
+import medproject.medlibrary.prescription.Prescription;
+
 public class Examination implements Serializable{
 
 	private static final long serialVersionUID = -8864285944490559461L;
@@ -51,6 +54,10 @@ public class Examination implements Serializable{
 
 	public void addDiagnosis(Diagnosis diagnosis){
 		diagnosisList.add(diagnosis);
+	}
+	
+	public void addPrescription(Prescription prescription){
+		prescriptionList.add(prescription);
 	}
 	
 	public int getExaminationID() {
