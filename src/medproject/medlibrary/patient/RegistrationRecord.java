@@ -8,11 +8,8 @@ import java.sql.Date;
 
 public class RegistrationRecord implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private final Date registrationDate;
+	private Date registrationDate;
 	private Date unregistrationDate;
 	private boolean registered;
 
@@ -68,5 +65,9 @@ public class RegistrationRecord implements Serializable{
 
 	public Date getRegistrationDate() {
 		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
 	}
 }

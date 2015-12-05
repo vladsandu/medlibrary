@@ -8,9 +8,6 @@ import java.sql.Date;
 
 public class PatientRecord implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private final int PERSON_ID;
 	private final String CNP;
@@ -156,5 +153,16 @@ public class PatientRecord implements Serializable{
 		this.address.setCounty(newAddress.getCounty());
 		this.address.setCity(newAddress.getCity());
 		this.address.setStreet(newAddress.getStreet());
+	}
+	
+	public boolean isInsured(){
+		if(status == PatientStatus.ASIGURAT)
+			return true;
+		else
+			return false;
+	}
+	
+	public String getFullName(){
+		return firstName + " " + lastName; 
 	}
 }
