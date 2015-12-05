@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import medproject.medlibrary.medication.Medication;
 
 public class Prescription implements Serializable{
 	
@@ -14,6 +18,7 @@ public class Prescription implements Serializable{
 	private final int dayCount;
 	private final PrescriptionType type;
 	private PrescriptionStatus status;
+	private final List<Medication> medicationList;
 	
 	public Prescription(int iD, int examinationID, int dayCount, PrescriptionType type, PrescriptionStatus status) {
 		ID = iD;
@@ -21,6 +26,12 @@ public class Prescription implements Serializable{
 		this.dayCount = dayCount;
 		this.type = type;
 		this.status = status;
+		
+		medicationList = new ArrayList<Medication>();
+	}
+
+	public void addMedication(Medication medication){
+		medicationList.add(medication);
 	}
 	
 	private void readObject(
