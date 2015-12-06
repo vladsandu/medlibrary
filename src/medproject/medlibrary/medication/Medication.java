@@ -17,7 +17,8 @@ public class Medication implements Serializable{
 	private final MedicationAdministrationType type;
 	private final TreatmentScheme scheme;
 	private String observations;
-
+	private Drug drug;
+	
 	public Medication(int iD, int prescriptionID, int diagnosisID, int drugID, int quantity, int dayCount,
 			MedicationAdministrationType type, TreatmentScheme scheme, String observations) {
 		ID = iD;
@@ -29,6 +30,7 @@ public class Medication implements Serializable{
 		this.type = type;
 		this.scheme = scheme;
 		this.observations = observations;
+		drug = null;
 	}
 
 	public Medication(int iD, int prescriptionID, int diagnosisID, int drugID, int quantity, int dayCount,
@@ -42,6 +44,7 @@ public class Medication implements Serializable{
 		this.dayCount = dayCount;
 		this.type = type;
 		this.scheme = scheme;
+		drug = null;
 	}
 
 
@@ -94,4 +97,22 @@ public class Medication implements Serializable{
 		return scheme;
 	}
 
+	public Drug getDrug() {
+		return drug;
+	}
+
+	public void setDrug(Drug drug) {
+		this.drug = drug;
+	}
+
+	public int getDiagnosisID() {
+		return diagnosisID;
+	}
+
+	public String getDrugName() {
+		if(drug == null)
+			return "Unknown Data";
+		
+		return drug.getName();
+	}
 }
