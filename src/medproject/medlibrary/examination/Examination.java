@@ -9,23 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import medproject.medlibrary.diagnosis.Diagnosis;
+import medproject.medlibrary.patient.Patient;
 import medproject.medlibrary.prescription.Prescription;
 
 public class Examination implements Serializable{
 
 	private static final long serialVersionUID = -8864285944490559461L;
 
-	private final int examinationID;
+	private int examinationID;
 	private final int patientID;
-	private final Date examinationDate;
-	private final List<Diagnosis> diagnosisList;
-	private final List<Prescription> prescriptionList;
+	private Date examinationDate;
+	private List<Diagnosis> diagnosisList;
+	private List<Prescription> prescriptionList;
 	
-	private final Diagnosis mainDiagnosis;
-	private final String observations;
-	private final ExaminationType examinationType;
+	private int mainDiagnosisID;
+	private String observations;
+	private ExaminationType examinationType;
+	private Patient patient;
 	
-	public Examination(int examinationID, int patientID, Date examinationDate, Diagnosis mainDiagnosis, 
+	public Examination(int patientID, ExaminationType examinationType) {
+		this.mainDiagnosisID = -1;
+		this.patientID = patientID;
+		this.examinationType = examinationType;
+	}
+
+	public Examination(int examinationID, int patientID, Date examinationDate, int mainDiagnosisID, 
 			String observations, ExaminationType examinationType) {
 		this.examinationID = examinationID;
 		this.patientID = patientID;
@@ -33,9 +41,10 @@ public class Examination implements Serializable{
 		this.diagnosisList = new ArrayList<Diagnosis>();
 		this.prescriptionList = new ArrayList<Prescription>();
 		
-		this.mainDiagnosis = mainDiagnosis;
+		this.mainDiagnosisID = mainDiagnosisID;
 		this.observations = observations;
 		this.examinationType = examinationType;
+		patient = null;
 	}
 
 	private void readObject(
@@ -60,6 +69,38 @@ public class Examination implements Serializable{
 		prescriptionList.add(prescription);
 	}
 	
+	public String getMainDiagnosisName(){
+		String name = "-";
+		
+		if(mainDiagnosisID == -1)
+			return name;
+		
+		
+		for(Diagnosis diagnosis : diagnosisList){
+			if(diagnosis.getDiagnosisID() == mainDiagnosisID){
+				if(diagnosis.getDiagnosisInfo() != null)
+					name = diagnosis.getDiagnosisInfo().getName();
+				break;
+			}
+		}
+		
+		return name;
+	}
+	
+	public String getPatientName(){
+		if(patient == null)
+			return "";
+		
+		return patient.getPatientRecord().getFullName();
+	}
+	
+	public String getPatientCNP(){
+		if(patient == null)
+			return "";
+		
+		return patient.getPatientRecord().getCNP();
+	}
+	
 	public int getExaminationID() {
 		return examinationID;
 	}
@@ -76,8 +117,8 @@ public class Examination implements Serializable{
 		return diagnosisList;
 	}
 
-	public Diagnosis getMainDiagnosis() {
-		return mainDiagnosis;
+	public int getMainDiagnosisID() {
+		return mainDiagnosisID;
 	}
 
 	public String getObservations() {
@@ -90,5 +131,13 @@ public class Examination implements Serializable{
 
 	public List<Prescription> getPrescriptionList() {
 		return prescriptionList;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 }
