@@ -52,6 +52,12 @@ public class ExaminationTableView extends TableView<Examination>{
 		getColumns().add(typeColumn);
 		
 		TableColumn<Examination, String> diagnosisColumn = new TableColumn<Examination, String>("Diagnostic");
+		diagnosisColumn.setCellValueFactory(new Callback<CellDataFeatures<Examination, String>, ObservableValue<String>>() {
+		     public ObservableValue<String> call(CellDataFeatures<Examination, String> p) {
+		         return new ReadOnlyObjectWrapper<String>(p.getValue().getMainDiagnosisName());
+		     }
+		  });
+		getColumns().add(diagnosisColumn);
 		
 		TableColumn<Examination, String> cnpColumn = new TableColumn<Examination, String>("CNP");
 		cnpColumn.setCellValueFactory(new Callback<CellDataFeatures<Examination, String>, ObservableValue<String>>() {
