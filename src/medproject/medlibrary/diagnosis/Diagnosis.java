@@ -11,17 +11,21 @@ public class Diagnosis implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private final int ID;
 	private final int examinationID;
-	private int diagnosisType;
+	private int diagnosisID;
 	private String observations;
 	private boolean active;
+	private final Date startDate;
 	private Date endDate;
+	private DiagnosisInfo diagnosisInfo;
 	
-	public Diagnosis(int iD, int examinationID, int diagnosisType, String observations, boolean active, Date endDate) {
+	public Diagnosis(int iD, int examinationID, int diagnosisID, String observations, boolean active, Date startDate, Date endDate) {
+		diagnosisInfo = null;
 		ID = iD;
 		this.examinationID = examinationID;
-		this.diagnosisType = diagnosisType;
+		this.diagnosisID = diagnosisID;
 		this.observations = observations;
 		this.active = active;
+		this.startDate = startDate;
 		this.endDate = endDate;
 	}
 
@@ -38,13 +42,13 @@ public class Diagnosis implements Serializable{
 
 		aOutputStream.defaultWriteObject();
 	}
-
-	public int getDiagnosisType() {
-		return diagnosisType;
+	
+	public int getDiagnosisID() {
+		return diagnosisID;
 	}
 
-	public void setDiagnosisType(int diagnosisType) {
-		this.diagnosisType = diagnosisType;
+	public void setDiagnosisID(int diagnosisID) {
+		this.diagnosisID = diagnosisID;
 	}
 
 	public String getObservations() {
@@ -63,8 +67,11 @@ public class Diagnosis implements Serializable{
 		this.active = active;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public String getEndDateString() {
+		if(endDate == null)
+			return "-";
+		
+		return endDate.toString();
 	}
 
 	public void setEndDate(Date endDate) {
@@ -77,5 +84,25 @@ public class Diagnosis implements Serializable{
 
 	public int getExaminationID() {
 		return examinationID;
+	}
+
+	public DiagnosisInfo getDiagnosisInfo() {
+		return diagnosisInfo;
+	}
+
+	public void setDiagnosisInfo(DiagnosisInfo diagnosisInfo) {
+		this.diagnosisInfo = diagnosisInfo;
+	}
+
+	public String getStartDateString() {
+		return startDate.toString();
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
 	}	
 }
